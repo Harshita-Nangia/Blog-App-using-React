@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// type rafce for basic boiler plate
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Blogs } from './components/Blogs';
+import HomePage from './components/HomePage';
+import Navbar from './components/Navbar';
+import { selectSignedIn } from './features/userSlice';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import "./style/app.css";
+
+const App = () => {
+const isSignedIn=useSelector(selectSignedIn)
+
+    return (
+        <div className="app">
+            <Navbar />
+            <HomePage/>
+            {isSignedIn && <Blogs/>}
+        </div>
+    );
+};
 
 export default App;
